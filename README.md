@@ -58,6 +58,8 @@ docker run --name dsf2025-postgres \
 
 Data was loaded into this database using a Python script (`3_course_to_postgres.py`) powered by `pandas` + `sqlalchemy`.
 
+    python src/3_course_to_postgres.py
+
 ---
 
 ## 🧪 Example Query
