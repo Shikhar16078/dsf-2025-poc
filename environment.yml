@@ -1,0 +1,14 @@
+name: ds_fellow
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - requests
+  - beautifulsoup4
+  - pyspark
+  - pandas
+  - sqlalchemy
+  - pip
+  - pip:
+      - psycopg2-binary
