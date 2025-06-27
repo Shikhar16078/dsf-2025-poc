@@ -4,13 +4,24 @@ This project is a proof-of-concept chatbot to help students generate valid, pers
 
 ---
 
+## Install & Setup
+
+    conda create -f environment.yml
+
+later if required (some packages must be downloaded using pip in txt format, this is used as a placeholder for now)
+
+    conda activate ds_fellow
+    pip install -r requirements.txt
+
 ## ✅ Current Progress
 
 ### 🔹 1. Extract: Fetch Course Data from Banner API
+
 - Pulled raw course section data from UCR’s Banner API (Fall 2024 – `term=202440`)
 - Saved raw JSON to: `data/raw/raw_courses.json`
 
 ### 🔹 2. Transform: Clean & Normalize Using PySpark
+
 - Parsed nested JSON into structured 3NF tables using PySpark
 - Output tables:
   - `courses.csv`
@@ -28,6 +39,7 @@ docker pull postgres
 ```
 
 Command used to create a local Postgres container with preconfigured database:
+
 ```bash
 docker run --name dsf2025-postgres \
   -e POSTGRES_USER=postgres \
@@ -49,6 +61,7 @@ Query to return all **graduate-level CS courses** offered in **Fall 2024**:
 SELECT * FROM public.courses
 WHERE subject = 'CS' AND course_number LIKE '2%';
 ```
+
 <img src="media/images/grad-courses.png" alt="Graduate CS Courses Demo" width="600"/>
 
 ---
