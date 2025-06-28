@@ -1,7 +1,6 @@
 import psycopg2
 import json
 
-# ---- CONFIG ----
 DB_CONFIG = {
     'dbname': 'dsf_2025_poc',
     'user': 'postgres',
@@ -13,7 +12,6 @@ DB_CONFIG = {
 DEGREE_NAME = 'Computer Science'
 COMPLETED = {"CS010A", "CS010B"}
 
-# ----------------
 
 def get_dag(conn, degree_name):
     with conn.cursor() as cur:
