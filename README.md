@@ -82,6 +82,8 @@ WHERE subject = 'CS' AND course_number LIKE '2%';
   - possibly build a DAG to have all the constraint for degree requiremenets which can be added to a queue based on which classes have been satisfied. Later the LLM (such as ChatGPT) can be used to plan out the schedule based on the queue and class offering lists.
 - Wrap logic in a chatbot interface (e.g., Streamlit or Flask)
 - Support real-time course updates (optionally rerun fetchers per quarter)
+- need a api key for gemini at the moment (has to be fixed upon deployment)
+- showcase the schedule using visualizations given the output
 
 ---
 
