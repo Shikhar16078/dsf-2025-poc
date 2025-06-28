@@ -20,6 +20,8 @@ later if required (some packages must be downloaded using pip in txt format, thi
 - Pulled raw course section data from UCR’s Banner API (Fall 2024 – `term=202440`)
 - Saved raw JSON to: `data/raw/raw_courses.json`
 
+      python src/1_banner_course_scrapper.py
+
 ### 🔹 2. Transform: Clean & Normalize Using PySpark
 
 - Parsed nested JSON into structured 3NF tables using PySpark
@@ -30,9 +32,14 @@ later if required (some packages must be downloaded using pip in txt format, thi
   - `meeting_times.csv`
 - Saved all files in: `data/cleaned/`
 
+      python src/2_course_preprocess.py
+
 ### 🔹 3. Load: Push into PostgreSQL (via Docker)
 
 #### 🐳 Pull the Official Postgres Image (if not already installed)
+
+- First you need to make sure that you have docker installed on your system.
+  - Check [this](https://www.docker.com/) out for how to install docker!
 
 ```bash
 docker pull postgres
@@ -43,13 +50,15 @@ Command used to create a local Postgres container with preconfigured database:
 ```bash
 docker run --name dsf2025-postgres \
   -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_PASSWORD=password \
   -e POSTGRES_DB=dsf_2025_poc \
   -p 5432:5432 \
   -d postgres
 ```
 
 Data was loaded into this database using a Python script (`3_course_to_postgres.py`) powered by `pandas` + `sqlalchemy`.
+
+    python src/3_course_to_postgres.py
 
 ---
 
@@ -70,6 +79,7 @@ WHERE subject = 'CS' AND course_number LIKE '2%';
 
 - Create student mock profiles (completed courses + degree plan)
 - Build a scheduling engine (prerequisite checking, conflict avoidance)
+  - possibly build a DAG to have all the constraint for degree requiremenets which can be added to a queue based on which classes have been satisfied. Later the LLM (such as ChatGPT) can be used to plan out the schedule based on the queue and class offering lists.
 - Wrap logic in a chatbot interface (e.g., Streamlit or Flask)
 - Support real-time course updates (optionally rerun fetchers per quarter)
 
