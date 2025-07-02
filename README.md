@@ -132,12 +132,6 @@ WHERE subject = 'CS' AND course_number LIKE '2%';
 
 <img src="media/images/grad-courses.png" alt="Graduate CS Courses Demo" width="600"/>
 
-### 🔹 4. Fabricating fake student data and UI using REACT.
-
-#### To be added by Ahmad.
-
-If you are planning to create a separate MD document for your react part of the app you can link it to the 4th point.
-
 ---
 
 ## 🔜 Next Steps
